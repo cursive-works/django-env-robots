@@ -1,4 +1,9 @@
-0.0.1 (dd-mm-yyyy)
+0.0.2 (2024-05-23)
+------------------
+ - use Django template rather than custom root.
+
+
+0.0.1 (2024-05-23)
 ------------------
 
  - initial release

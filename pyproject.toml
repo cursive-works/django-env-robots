@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-env-robots"
-version = "0.0.1"
+version = "0.0.2"
 description = "Control robots.txt files from environment variables and templates."
 readme = "README.md"
 authors = [{ name = "Pat Smith", email = "pat.smith@cursive.works" }]

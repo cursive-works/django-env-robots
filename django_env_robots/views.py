@@ -1,16 +1,9 @@
-import os
-from django.http import HttpResponse
+
 from django.conf import settings
-from django.template import Context, Template
+from django.template import loader
+from django.shortcuts import render
+from django.template.exceptions import TemplateDoesNotExist
 
-DEFAULT_TEMPLATE = """
-# Robots template: "{{ template }}" could not be found. Using default
-User-agent: *
-Disallow: /
-
-{% for sitemap_url in sitemap_urls %}Sitemap: {{ sitemap_url }}
-{% endfor %}
-"""
 
 def robots(request):
 
@@ -21,20 +14,16 @@ def robots(request):
     except AttributeError:
         pass
 
-    context = Context({
+    context = {
         'scheme': request.scheme,
         'host': request.get_host(),
         'sitemap_urls': sitemap_urls,
-    })
+    }
 
-    robots_txt = os.path.join(settings.ROBOTS_ROOT, f"{settings.SERVER_ENV}.txt")
+    template_name = f"robots/{settings.SERVER_ENV}.txt"
     try:
-        with open(robots_txt, 'r') as rfile:
-            content = rfile.read()
-    except FileNotFoundError:
-        content = DEFAULT_TEMPLATE
-        context['template'] = robots_txt
+        loader.get_template(template_name)
+    except TemplateDoesNotExist:
+        template_name = "robots/default.txt"
 
-    template = Template(content)
-    response = template.render(context)
-    return HttpResponse(response, content_type="text/plain")
+    return render(request, template_name, context=context)
