@@ -34,8 +34,7 @@ from django_env_robots import urls as robots_urls
 urlpatterns = [
     path("robots.txt", include(robots_urls)),
 ]
-
+```
 ### Other considertions
 
 A robots.txt being served from a Whitenose public directory will win over this app. That is because of whitenoise's middleware behaviour - quite correct but watch out for that.
-```
