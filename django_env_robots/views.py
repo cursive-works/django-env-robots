@@ -26,4 +26,4 @@ def robots(request):
     except TemplateDoesNotExist:
         template_name = "robots/default.txt"
 
-    return render(request, template_name, context=context)
+    return render(request, template_name, context=context, content_type="text/plain")
