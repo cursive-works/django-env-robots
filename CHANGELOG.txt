@@ -1,3 +1,7 @@
+0.0.3 (2024-05-31)
+------------------
+ - response in PLAIN TEXT.
+
 0.0.2 (2024-05-23)
 ------------------
  - use Django template rather than custom root.
