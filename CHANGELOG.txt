@@ -1,3 +1,7 @@
+0.0.4 (2025-06-03)
+------------------
+ - moved sitemap configuration to the template - keep it simple
+
 0.0.3 (2024-05-31)
 ------------------
  - response in PLAIN TEXT.

@@ -7,18 +7,7 @@ from django.template.exceptions import TemplateDoesNotExist
 
 def robots(request):
 
-    sitemap_urls = []
-    try:
-        for sitemap_url in settings.ROBOTS_SITEMAP_URLS:
-            sitemap_urls.append(f"{request.scheme}://{request.get_host()}{sitemap_url}")
-    except AttributeError:
-        pass
-
-    context = {
-        'scheme': request.scheme,
-        'host': request.get_host(),
-        'sitemap_urls': sitemap_urls,
-    }
+    context = {}
 
     template_name = f"robots/{settings.SERVER_ENV}.txt"
     try:

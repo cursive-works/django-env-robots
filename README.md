@@ -1,6 +1,7 @@
 # Django Env Robots (.txt)
 
-Serve different robots.txt from your production | stage | etc servers by setting environment variables. Rules are managed via templates.
+Serve different robots.txt from your production | stage | etc servers by setting environment variables.
+Rules are managed via templates.
 By default it excludes robots entirely.
 
 
@@ -23,12 +24,10 @@ Then add the following to your project's `INSTALLED_APPS`.
 ### settings.py
 Set the following:
  - `SERVER_ENV` identifies the nature of the server and thus the robots.txt template that will be used.
- - `ROBOT_SITEMAP_URLS` a list of relative urls to your sitemap(s).
 
 E.g:
 ```
 SERVER_ENV = 'production'
-ROBOTS_SITEMAP_URLS = ['/sitemap.xml', '/other_sitemap.xml']
 ```
 
 ### urls.py
@@ -51,10 +50,10 @@ For example, if `SERVER_ENV` can be `production` or `stage`, then create:
 e.g:
 ```
 User-agent: *
-Disallow: /admin/*
+Disallow: /admin/
 
-{% for sitemap_url in sitemap_urls %}Sitemap: {{ sitemap_url }}
-{% endfor %}
+Sitemap: https://www.example.com/sitemap.xml
+Sitemap: https://www2.example.com/sitemap.xml
 ```
 
 ### Other considertions

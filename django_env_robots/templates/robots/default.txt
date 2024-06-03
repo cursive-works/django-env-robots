@@ -1,6 +1,3 @@
 # Robots template: "{{ template }}" could not be found. Using default
 User-agent: *
 Disallow: /
-
-{% for sitemap_url in sitemap_urls %}Sitemap: {{ sitemap_url }}
-{% endfor %}
